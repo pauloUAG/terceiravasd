@@ -1,10 +1,5 @@
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-import operator
-from pandas import DataFrame
-import matplotlib.patches as patches
-from streamlit.hashing import _CodeHasher
-from streamlit.report_thread import get_report_ctx
-from streamlit.server.server import Server
+streamlit==0.82.0
+pandas==1.2.4
+matplotlib==3.4.2
+numpy==1.20.3
+operator==0.13.16
