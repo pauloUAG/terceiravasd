@@ -50,7 +50,8 @@ def main():
 
 def page_dashboard(state):
     
-    st.header('Total de Vendas por Ano:')
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
+    st.header('Total de vendas por ano:')
     #dados_vendas = pd.read_csv("Vendas2.csv")
     
     url = 'Vendas.csv'
@@ -89,7 +90,8 @@ def page_dashboard(state):
 
 def page_settings(state):
     
-    st.header('Total de Vendas por Categoria:')
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
+    st.header('Total de vendas por categoria:')
     #dados_vendas = pd.read_csv("Vendas2.csv")
     
     # letra B
@@ -121,7 +123,8 @@ def page_settings(state):
 
 def page_dashboard2(state):
     
-    st.header('Total de Vendas por Categoria por Ano:')
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
+    st.header('Total de vendas por categoria por ano:')
 
     url = 'Vendas.csv'
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
@@ -195,7 +198,8 @@ def page_dashboard2(state):
 
 def page_settings2(state):
     
-    st.header('Total de Vendas por Ano e Categoria:')
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
+    st.header('Total de vendas por ano e categoria:')
 
     url = 'Vendas.csv'
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
@@ -274,7 +278,8 @@ def page_settings2(state):
 
 def page_dashboard3(state):
     
-    st.header('Total de Vendas por Categoria pelos Meses para cada Ano:')
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
+    st.header('Total de vendas por categoria pelos meses para cada ano:')
 
     url = 'Vendas.csv'
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
@@ -440,6 +445,7 @@ def page_dashboard3(state):
 
 def page_settings3(state):
     
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
     st.header('Produtos mais vendidos por cada fabricante:')
 
     url = 'Vendas.csv'
@@ -510,6 +516,7 @@ def page_settings3(state):
 
 def page_dashboard4(state):
     
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
     st.header('Vendas das lojas por categoria:')
 
     url = 'Vendas.csv'
@@ -585,6 +592,7 @@ def page_dashboard4(state):
 
 def page_settings4(state):
     
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
     st.header('Ranking dos produtos com maiores vendas no geral e por loja:')
 
     url = 'Vendas.csv'
@@ -699,6 +707,7 @@ def page_settings4(state):
 
 def page_dashboard5(state):
     
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
     st.header('Ranking dos produtos com menores vendas no geral e por loja:')
 
     # letra I
@@ -817,6 +826,7 @@ def page_dashboard5(state):
 
 def page_settings5(state):
     
+    st.markdown("<h1 style='text-align: center;'>Ciência de Dados</h1>", unsafe_allow_html=True)
     st.header('Ranking de vendas por lojas:')
 
     # letra K
