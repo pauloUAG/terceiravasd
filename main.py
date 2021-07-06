@@ -1416,11 +1416,15 @@ def page_dashboard5(state):
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
     produtos = df['Produto'].tolist()
     lojas = df['Loja'].tolist()
+    iteraLojas = 0
     produtosTemp = []
     lojasTemp = []
-    produtosQt = []
+    produtosQt = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     produtosLista = []
     count = 0
+    cont = 0
+
+    # print(produtosQt[0])
         
     for indice in produtos:
         
@@ -1431,15 +1435,111 @@ def page_dashboard5(state):
         
         if(indice not in lojasTemp):
             lojasTemp.append(indice)
-        
-    for indice2 in produtosTemp:
-        produtosQt.append(produtos.count(indice2))
+            
+    # print(produtosTemp)
+    produto0 = 0.0
+    produto1 = 0.0
+    produto2 = 0.0
+    produto3 = 0.0
+    produto4 = 0.0
+    produto5 = 0.0
+    produto6 = 0.0
+    produto7 = 0.0
+    produto8 = 0.0
+    produto9 = 0.0
+    produto10 = 0.0
+    produto11 = 0.0
+    produto12 = 0.0
+    produto13 = 0.0
+    produto14 = 0.0
+    produto15 = 0.0
+    produto16 = 0.0
+    produto17 = 0.0
+    produto18 = 0.0
+
+    for indice2 in df.index:
+        if(df["Produto"][indice2] == "Morotola Moto G5"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto0 += substituir
+            produtosQt[0] = produto0
+        elif(df["Produto"][indice2] == "Samsung Galaxy 8"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto1 += substituir
+            produtosQt[1] = produto1
+        elif(df["Produto"][indice2] == "LG K10 TV Power"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto2 += substituir
+            produtosQt[2] = produto2
+        elif(df["Produto"][indice2] == "Sony Experia XA"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto3 += substituir
+            produtosQt[3] = produto3
+        elif(df["Produto"][indice2] == "Geladeira Duplex"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto4 += substituir
+            produtosQt[4] = produto4
+        elif(df["Produto"][indice2] == "Grill"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto5 += substituir
+            produtosQt[5] = produto5
+        elif(df["Produto"][indice2] == "Lavadora 11 Kg"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto6 += substituir
+            produtosQt[6] = produto6
+        elif(df["Produto"][indice2] == "Micro"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto7 += substituir
+            produtosQt[7] = produto7
+        elif(df["Produto"][indice2] == "Ar Condicionado"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto8 += substituir
+            produtosQt[8] = produto8
+        elif(df["Produto"][indice2] == "Secadora Vapor"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto9 += substituir
+            produtosQt[9] = produto9
+        elif(df["Produto"][indice2] == "Forno"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto10 += substituir
+            produtosQt[10] = produto10
+        elif(df["Produto"][indice2] == "Desktop HP 16 GB"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto11 += substituir
+            produtosQt[11] = produto11
+        elif(df["Produto"][indice2] == "Notebook Dell 8 GB"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto12 += substituir
+            produtosQt[12] = produto12
+        elif(df["Produto"][indice2] == "Impressora Deskjet"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto13 += substituir
+            produtosQt[13] = produto13
+        elif(df["Produto"][indice2] == "Aspirador"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto14 += substituir
+            produtosQt[14] = produto14
+        elif(df["Produto"][indice2] == "Ventilador"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto15 += substituir
+            produtosQt[15] = produto15
+        elif(df["Produto"][indice2] == "Fritadeira"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto16 += substituir
+            produtosQt[16] = produto16
+        elif(df["Produto"][indice2] == "Processador de Alimentos"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto17 += substituir
+            produtosQt[17] = produto17
+        elif(df["Produto"][indice2] == "Liquidificador"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            produto18 += substituir
+            produtosQt[18] = produto18
+
+
+    # print(produtosQt)
         
     dfProdutos = pd.DataFrame(list(zip(produtosTemp,produtosQt)), columns = ['Produtos','Quantidade'])
     dfProdutosOrdenados = dfProdutos.sort_values(by=['Quantidade'], ascending=False)
-
-    # print(dfProdutos)
-    # print(dfProdutosOrdenados)
 
     # INICIO DE ÁREA PARA CRIAR O RANKING GERAL!
 
@@ -1452,7 +1552,7 @@ def page_dashboard5(state):
 
     # Title, Label, Ticks and Ylim
     ax.set_title('Geral', fontdict={'size':22})
-    ax.set(ylabel='Quantidades', ylim=(0, 800))
+    ax.set(ylabel='Valores - R$', ylim=(0, 900000))
     plt.xticks(dfProdutosOrdenados.index, dfProdutosOrdenados.Produtos.str.upper(), rotation=60, horizontalalignment='right', fontsize=12)
 
     # Add patches to color the X axis labels
@@ -1484,28 +1584,136 @@ def page_dashboard5(state):
                 
         tempProdutosLoja.append(temp)
         
-    for indice3 in tempProdutosLoja:
 
-        produtosLojaQuantidade = []
-        for indice4 in produtosTemp:
-            produtosLojaQuantidade.append(indice3.count(indice4))
+    for indice in lojasTemp:
+        
+        produtosValores = []
+        lojasDicio = {}
+        cont = 0
+        somatorio = 0
+        produto1 = 0.0
+        produto2 = 0.0
+        produto3 = 0.0
+        produto4 = 0.0
+        produto5 = 0.0
+        produto6 = 0.0
+        produto7 = 0.0
+        produto8 = 0.0
+        produto9 = 0.0
+        produto10 = 0.0
+        produto11 = 0.0
+        produto12 = 0.0
+        produto13 = 0.0
+        produto14 = 0.0
+        produto15 = 0.0
+        produto16 = 0.0
+        produto17 = 0.0
+        produto18 = 0.0
+        produto19 = 0.0
+        
+        for indice2 in df['concatena']:
+            
+            produtosLojas = []
+            valor = indice2.split("-")
+    #         print(valor)
 
-        dfProdutos = pd.DataFrame(list(zip(produtosTemp,produtosLojaQuantidade)), columns = ['Produtos','Quantidade'])
-        dfProdutosOrdenados = dfProdutos.sort_values(by=['Quantidade'], ascending=False)
-
-        # INICIO DE ÁREA PARA CRIAR O RANKING GERAL POR LOJA!
-
-        #   Desenhar o gráfico
+            if(indice == valor[1]):
+                if(valor[0] == "Morotola Moto G5"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto1 += substituir
+                    lojasDicio.update({'Morotola Moto G5': produto1})
+                elif(valor[0] == "Samsung Galaxy 8"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto2 += substituir
+                    lojasDicio.update({'Samsung Galaxy 8': produto2})
+                elif(valor[0] == "LG K10 TV Power"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto3 += substituir
+                    lojasDicio.update({'LG K10 TV Power': produto3})
+                elif(valor[0] == "Sony Experia XA"):
+    #                 print('ENTROU AQUI!')
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto4 += substituir
+                    lojasDicio.update({'Sony Experia XA': produto4})
+                elif(valor[0] == "Geladeira Duplex"):
+    #                 print('ENTROU AQUI!')
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto5 += substituir
+                    lojasDicio.update({'Geladeira Duplex': produto5})
+                elif(valor[0] == "Grill"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto6 += substituir
+                    lojasDicio.update({'Grill': produto6})
+                elif(valor[0] == "Lavadora 11 Kg"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto7 += substituir
+                    lojasDicio.update({'Lavadora 11 Kg': produto7})
+                elif(valor[0] == "Micro"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto8 += substituir
+                    lojasDicio.update({'Micro': produto8})
+                elif(valor[0] == "Ar Condicionado"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto9 += substituir
+                    lojasDicio.update({'Ar Condicionado': produto9})
+                elif(valor[0] == "Secadora Vapor"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto10 += substituir
+                    lojasDicio.update({'Secadora Vapor': produto10})
+                elif(valor[0] == "Forno"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto11 += substituir
+                    lojasDicio.update({'Forno': produto11})
+                elif(valor[0] == "Desktop HP 16 GB"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto12 += substituir
+                    lojasDicio.update({'Desktop HP 16 GB': produto12})
+                elif(valor[0] == "Notebook Dell 8 GB"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto13 += substituir
+                    lojasDicio.update({'Notebook Dell 8 GB': produto13})
+                elif(valor[0] == "Impressora Deskjet"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto14 += substituir
+                    lojasDicio.update({'Impressora Deskjet': produto14})
+                elif(valor[0] == "Aspirador"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto15 += substituir
+                    lojasDicio.update({'Aspirador': produto15})
+                elif(valor[0] == "Ventilador"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto16 += substituir
+                    lojasDicio.update({'Ventilador': produto16})
+                elif(valor[0] == "Fritadeira"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto17 += substituir
+                    lojasDicio.update({'Fritadeira': produto17})
+                elif(valor[0] == "Processador de Alimentos"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto18 += substituir
+                    lojasDicio.update({'Processador de Alimentos': produto18})
+                elif(valor[0] == "Liquidificador"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto19 += substituir
+                    lojasDicio.update({'Liquidificador': produto19})
+            cont += 1
+            
+        
+        sortedDict = sorted(lojasDicio.items(), key=operator.itemgetter(1), reverse=True)
+        dfFinal = DataFrame (sortedDict,columns=['Produto', 'Quantidade'])
+        
         fig, ax = plt.subplots(figsize=(16,10), facecolor='white', dpi= 80)
-        ax.vlines(x=dfProdutos.index, ymin=0, ymax=dfProdutosOrdenados.Quantidade, color='firebrick', alpha=0.7, linewidth=20)
+        ax.vlines(x=dfFinal.index, ymin=0, ymax=dfFinal.Quantidade, color='firebrick', alpha=0.7, linewidth=20)
 
-        for i, Quantidade in enumerate(dfProdutosOrdenados.Quantidade):
+        for i, Quantidade in enumerate(dfFinal.Quantidade):
             ax.text(i, Quantidade+0.5, round(Quantidade, 1), horizontalalignment='center')
 
         # Title, Label, Ticks and Ylim
-        ax.set_title(lojasTemp[count], fontdict={'size':22})
-        ax.set(ylabel='Quantidades', ylim=(0, 800))
-        plt.xticks(dfProdutosOrdenados.index, dfProdutosOrdenados.Produtos.str.upper(), rotation=60, horizontalalignment='right', fontsize=12)
+    #     print(dfFinal)
+        ax.set_title(lojasTemp[iteraLojas], fontdict={'size':22})
+        iteraLojas += 1
+        ax.set(ylabel='Valores - R$', ylim=(0, 800000))
+        plt.xticks(dfFinal.index, dfFinal.Produto.str.upper(), rotation=60, horizontalalignment='right', fontsize=12)
 
         # Add patches to color the X axis labels
         p1 = patches.Rectangle((.57, -0.005), width=.33, height=.13, alpha=.1, facecolor='green', transform=fig.transFigure)
