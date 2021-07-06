@@ -360,7 +360,7 @@ def page_dashboard3(state):
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
     categorias = []
     categoriasTotalAno = []
-    # categoriasAnoTemp = []
+    cont2 = 0
     ano = []
     dados = []
     listaTemp = []
@@ -379,10 +379,83 @@ def page_dashboard3(state):
             categorias.append(indice)
             
     for indice in ano:
+    #     print("FOR 1")
         
         categoriasAno = []
-        categoriasQuantidade = []
         categoriasTotal = []
+        categoriasQuantidadeJan = []
+        categoriasQuantidadeFev = []
+        categoriasQuantidadeMar = []
+        categoriasQuantidadeAbr = []
+        categoriasQuantidadeMai = []
+        categoriasQuantidadeJun = []
+        categoriasQuantidadeJul = []
+        categoriasQuantidadeAgo = []
+        categoriasQuantidadeSet = []
+        categoriasQuantidadeOut = []
+        categoriasQuantidadeNov = []
+        categoriasQuantidadeDez = []
+        
+        somaCelularesJan = 0.0
+        somaEletrodomesticosJan = 0.0
+        somaEletronicosJan = 0.0
+        somaEletroportateisJan = 0.0
+        
+        somaCelularesFev = 0.0
+        somaEletrodomesticosFev = 0.0
+        somaEletronicosFev = 0.0
+        somaEletroportateisFev = 0.0
+        
+        somaCelularesMar = 0.0
+        somaEletrodomesticosMar = 0.0
+        somaEletronicosMar = 0.0
+        somaEletroportateisMar = 0.0
+        
+        somaCelularesAbr = 0.0
+        somaEletrodomesticosAbr = 0.0
+        somaEletronicosAbr = 0.0
+        somaEletroportateisAbr = 0.0
+        
+        somaCelularesMai = 0.0
+        somaEletrodomesticosMai = 0.0
+        somaEletronicosMai = 0.0
+        somaEletroportateisMai = 0.0
+        
+        somaCelularesJun = 0.0
+        somaEletrodomesticosJun = 0.0
+        somaEletronicosJun = 0.0
+        somaEletroportateisJun = 0.0
+        
+        somaCelularesJul = 0.0
+        somaEletrodomesticosJul = 0.0
+        somaEletronicosJul = 0.0
+        somaEletroportateisJul = 0.0
+        
+        somaCelularesAgo = 0.0
+        somaEletrodomesticosAgo = 0.0
+        somaEletronicosAgo = 0.0
+        somaEletroportateisAgo = 0.0
+        
+        somaCelularesSet = 0.0
+        somaEletrodomesticosSet = 0.0
+        somaEletronicosSet = 0.0
+        somaEletroportateisSet = 0.0
+        
+        somaCelularesOut = 0.0
+        somaEletrodomesticosOut = 0.0
+        somaEletronicosOut = 0.0
+        somaEletroportateisOut = 0.0
+        
+        somaCelularesNov = 0.0
+        somaEletrodomesticosNov = 0.0
+        somaEletronicosNov = 0.0
+        somaEletroportateisNov = 0.0
+        
+        somaCelularesDez = 0.0
+        somaEletrodomesticosDez = 0.0
+        somaEletronicosDez = 0.0
+        somaEletroportateisDez = 0.0
+        cont = 0
         
         categoriasJan = []
         categoriasFev = []
@@ -411,65 +484,279 @@ def page_dashboard3(state):
         categoriasDezQt = []
         
         for indice2 in df['concatena']:
+    #         print("FOR 2")
+            
             temp = indice2.split("-")
             temp2 = temp[1].split("/")
 
             if((indice == temp2[2]) and (temp2[1] == '01')):
+                
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesJan += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosJan += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosJan += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisJan += float(substituir)
                 categoriasJan.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '02')):
+    #             categoriasFev.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesFev += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosFev += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosFev += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisFev += float(substituir)
                 categoriasFev.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '03')):
+    #             categoriasMar.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesMar += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosMar += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosMar += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisMar += float(substituir)
                 categoriasMar.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '04')):
+    #             categoriasAbr.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesAbr += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosAbr += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosAbr += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisAbr += float(substituir)
                 categoriasAbr.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '05')):
+    #             categoriasMai.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesMai += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosMai += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosMai += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisMai += float(substituir)
                 categoriasMai.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '06')):
+    #             categoriasJun.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesJun += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosJun += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosJun += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisJun += float(substituir)
                 categoriasJun.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '07')):
+    #             categoriasJul.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesJul += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosJul += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosJul += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisJul += float(substituir)
                 categoriasJul.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '08')):
+    #             categoriasAgo.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesAgo += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosAgo += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosAgo += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisAgo += float(substituir)
                 categoriasAgo.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '09')):
+    #             categoriasSet.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesSet += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosSet += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosSet += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisSet += float(substituir)
                 categoriasSet.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '10')):
+    #             categoriasOut.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesOut += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosOut += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosOut += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisOut += float(substituir)
                 categoriasOut.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '11')):
+    #             categoriasNov.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesNov += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosNov += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosNov += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisNov += float(substituir)
                 categoriasNov.append(temp[0])
+                
             elif((indice == temp2[2]) and (temp2[1] == '12')):
+    #             categoriasDez.append(temp[0])
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelularesDez += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticosDez += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicosDez += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateisDez += float(substituir)
                 categoriasDez.append(temp[0])
-        
-        for indice3 in categorias:
-            categoriasJanQt.append(categoriasJan.count(indice3))
-            categoriasFevQt.append(categoriasFev.count(indice3))
-            categoriasMarQt.append(categoriasMar.count(indice3))
-            categoriasAbrQt.append(categoriasAbr.count(indice3))
-            categoriasMaiQt.append(categoriasMai.count(indice3))
-            categoriasJunQt.append(categoriasJun.count(indice3))
-            categoriasJulQt.append(categoriasJul.count(indice3))
-            categoriasAgoQt.append(categoriasAgo.count(indice3))
-            categoriasSetQt.append(categoriasSet.count(indice3))
-            categoriasOutQt.append(categoriasOut.count(indice3))
-            categoriasNovQt.append(categoriasNov.count(indice3))
-            categoriasDezQt.append(categoriasDez.count(indice3))
-        
-    #     print(categoriasDezQt)
-        categoriasTotal.append(categoriasJanQt)
-        categoriasTotal.append(categoriasFevQt)
-        categoriasTotal.append(categoriasMarQt)
-        categoriasTotal.append(categoriasAbrQt)
-        categoriasTotal.append(categoriasMaiQt)
-        categoriasTotal.append(categoriasJunQt)
-        categoriasTotal.append(categoriasJulQt)
-        categoriasTotal.append(categoriasAgoQt)
-        categoriasTotal.append(categoriasSetQt)
-        categoriasTotal.append(categoriasOutQt)
-        categoriasTotal.append(categoriasNovQt)
-        categoriasTotal.append(categoriasDezQt)
-        
-        categoriasTotalAno.append(categoriasTotal)
+            cont += 1
+            
+        categoriasQuantidadeJan.append(somaCelularesJan)
+        categoriasQuantidadeJan.append(somaEletrodomesticosJan)
+        categoriasQuantidadeJan.append(somaEletronicosJan)
+        categoriasQuantidadeJan.append(somaEletroportateisJan)
 
-    categoriasAno = []
+        categoriasQuantidadeFev.append(somaCelularesFev)
+        categoriasQuantidadeFev.append(somaEletrodomesticosFev)
+        categoriasQuantidadeFev.append(somaEletronicosFev)
+        categoriasQuantidadeFev.append(somaEletroportateisFev)
+
+        categoriasQuantidadeMar.append(somaCelularesMar)
+        categoriasQuantidadeMar.append(somaEletrodomesticosMar)
+        categoriasQuantidadeMar.append(somaEletronicosMar)
+        categoriasQuantidadeMar.append(somaEletroportateisMar)
+
+        categoriasQuantidadeAbr.append(somaCelularesAbr)
+        categoriasQuantidadeAbr.append(somaEletrodomesticosAbr)
+        categoriasQuantidadeAbr.append(somaEletronicosAbr)
+        categoriasQuantidadeAbr.append(somaEletroportateisAbr)
+
+        categoriasQuantidadeMai.append(somaCelularesMai)
+        categoriasQuantidadeMai.append(somaEletrodomesticosMai)
+        categoriasQuantidadeMai.append(somaEletronicosMai)
+        categoriasQuantidadeMai.append(somaEletroportateisMai)
+
+        categoriasQuantidadeJun.append(somaCelularesJun)
+        categoriasQuantidadeJun.append(somaEletrodomesticosJun)
+        categoriasQuantidadeJun.append(somaEletronicosJun)
+        categoriasQuantidadeJun.append(somaEletroportateisJun)
+
+        categoriasQuantidadeJul.append(somaCelularesJul)
+        categoriasQuantidadeJul.append(somaEletrodomesticosJul)
+        categoriasQuantidadeJul.append(somaEletronicosJul)
+        categoriasQuantidadeJul.append(somaEletroportateisJul)
+
+        categoriasQuantidadeAgo.append(somaCelularesAgo)
+        categoriasQuantidadeAgo.append(somaEletrodomesticosAgo)
+        categoriasQuantidadeAgo.append(somaEletronicosAgo)
+        categoriasQuantidadeAgo.append(somaEletroportateisAgo)
+
+        categoriasQuantidadeSet.append(somaCelularesSet)
+        categoriasQuantidadeSet.append(somaEletrodomesticosSet)
+        categoriasQuantidadeSet.append(somaEletronicosSet)
+        categoriasQuantidadeSet.append(somaEletroportateisSet)
+
+        categoriasQuantidadeOut.append(somaCelularesOut)
+        categoriasQuantidadeOut.append(somaEletrodomesticosOut)
+        categoriasQuantidadeOut.append(somaEletronicosOut)
+        categoriasQuantidadeOut.append(somaEletroportateisOut)
+
+        categoriasQuantidadeNov.append(somaCelularesNov)
+        categoriasQuantidadeNov.append(somaEletrodomesticosNov)
+        categoriasQuantidadeNov.append(somaEletronicosNov)
+        categoriasQuantidadeNov.append(somaEletroportateisNov)
+
+        categoriasQuantidadeDez.append(somaCelularesDez)
+        categoriasQuantidadeDez.append(somaEletrodomesticosDez)
+        categoriasQuantidadeDez.append(somaEletronicosDez)
+        categoriasQuantidadeDez.append(somaEletroportateisDez)
+
+        categoriasTotal.append(categoriasQuantidadeJan)
+        categoriasTotal.append(categoriasQuantidadeFev)
+        categoriasTotal.append(categoriasQuantidadeMar)
+        categoriasTotal.append(categoriasQuantidadeAbr)
+        categoriasTotal.append(categoriasQuantidadeMai)
+        categoriasTotal.append(categoriasQuantidadeJun)
+        categoriasTotal.append(categoriasQuantidadeJul)
+        categoriasTotal.append(categoriasQuantidadeAgo)
+        categoriasTotal.append(categoriasQuantidadeSet)
+        categoriasTotal.append(categoriasQuantidadeOut)
+        categoriasTotal.append(categoriasQuantidadeNov)
+        categoriasTotal.append(categoriasQuantidadeDez)
+
+        categoriasTotalAno.append(categoriasTotal)
+        
     anoAtual = 2014
     # print(categoriasTotalAno)
     for indice in categoriasTotalAno:
@@ -507,7 +794,7 @@ def page_dashboard3(state):
 
         plt.xlabel('Categorias')
         plt.xticks([r + barWidth for r in range(4)], ['Celulares', 'Eletrodomesticos', 'Eletronicos', 'Eletroportateis'])
-        plt.ylabel('Quantidade')
+        plt.ylabel('Valores - R$')
         plt.title('Total de vendas por categoria pelos meses para o ano de' + ' ' + str(anoAtual))
 
         plt.legend()
