@@ -91,7 +91,7 @@ def page_dashboard(state):
 
     plt.bar(ano, quantidades, color="#228B22")
     plt.xticks(ano)
-    plt.ylabel('Quantidade')
+    plt.ylabel('Valores - R$')
     plt.xlabel('Ano')
     plt.title('Total de vendas por ano')
     plt.grid()
@@ -111,13 +111,30 @@ def page_settings(state):
     url = 'Vendas.csv'
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
     categoria = df['Categoria']
+    categorias = ['Eletrodomésticos', 'Eletroportáteis', 'Eletrônicos', 'Celulares']
+    cont = 0
+    tamanhoDF = range(len(df))
+    # df['Categoria'] = df['Categoria'].astype(str)
 
-    categorias = categoria.value_counts()
+    # categorias = categoria.value_counts()
     quantidades = []
-    quantidades.append(categorias[0])
-    quantidades.append(categorias[1])
-    quantidades.append(categorias[2])
-    quantidades.append(categorias[3])
+
+    # quantidades.append(categorias[0])
+    # quantidades.append(categorias[1])
+    # quantidades.append(categorias[2])
+    # quantidades.append(categorias[3])
+
+
+    for indice in categorias:
+        
+        soma = 0.0
+        for indice2 in tamanhoDF:
+            temp = df['Categoria'].iloc[indice2]
+            if(temp == indice):
+                substituir = df['ValorVenda'].iloc[indice2].replace(',', '.')
+                soma += float(substituir)
+                
+        quantidades.append(soma)
 
     eixoX = ['Eletrodomêstico', 'Eletroportátel', 'Eletrônico', 'Celular']
 
