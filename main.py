@@ -1560,7 +1560,10 @@ def page_dashboard5(state):
     p2 = patches.Rectangle((.124, -0.005), width=.446, height=.13, alpha=.1, facecolor='red', transform=fig.transFigure)
     fig.add_artist(p1)
     fig.add_artist(p2)
-    plt.show()
+    plotar = plt.show()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+    st.pyplot(plotar)
 
     # FIM DE ÁREA PARA CRIAR O RANKING GERAL!
 
