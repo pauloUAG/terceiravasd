@@ -1220,7 +1220,7 @@ def page_settings4(state):
 
     # Title, Label, Ticks and Ylim
     ax.set_title('Geral', fontdict={'size':22})
-    ax.set(ylabel='Quantidades', ylim=(0, 900000))
+    ax.set(ylabel='Valores - R$', ylim=(0, 900000))
     plt.xticks(dfProdutosOrdenados.index, dfProdutosOrdenados.Produtos.str.upper(), rotation=60, horizontalalignment='right', fontsize=12)
 
     # Add patches to color the X axis labels
