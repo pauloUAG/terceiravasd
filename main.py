@@ -140,7 +140,7 @@ def page_settings(state):
 
     plt.bar(eixoX, quantidades, color="#ADD8E6")
     plt.xticks(eixoX)
-    plt.ylabel('Quantidade')
+    plt.ylabel('Valores - R$')
     plt.xlabel('Categorias')
     plt.title('Total de vendas por categoria')
     plt.grid()
@@ -175,25 +175,45 @@ def page_dashboard2(state):
     for indice in df['Categoria']:
         if(indice not in categorias):
             categorias.append(indice)
-            
         
     for indice in ano:
         
         categoriasAno = []
         categoriasQuantidade = []
+        somaCelulares = 0.0
+        somaEletrodomesticos = 0.0
+        somaEletronicos = 0.0
+        somaEletroportateis = 0.0
+        cont = 0
         
         for indice2 in df['concatena']:
+            
             temp = indice2.split("-")
             temp2 = temp[1].split("/")
 
             if(indice == temp2[2]):
+
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelulares += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticos += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicos += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateis += float(substituir)
                 categoriasAno.append(temp[0])
-                
+            cont += 1
         
-        for indice3 in categorias:
-            categoriasQuantidade.append(categoriasAno.count(indice3))
+        categoriasQuantidade.append(somaCelulares)
+        categoriasQuantidade.append(somaEletrodomesticos)
+        categoriasQuantidade.append(somaEletronicos)
+        categoriasQuantidade.append(somaEletroportateis)
         
-        categoriasTotal.append(categoriasQuantidade)
+        categoriasTotal.append(categoriasQuantidade)          
 
     barWidth = 0.1
 
@@ -215,7 +235,7 @@ def page_dashboard2(state):
 
     plt.xlabel('Categorias')
     plt.xticks([r + barWidth for r in range(len(categoriasTotal[0]))], categorias)
-    plt.ylabel('Quantidade')
+    plt.ylabel('Valores - R$')
     plt.title('Quantidade total de vendas por categoria por ano')
 
     plt.legend()
