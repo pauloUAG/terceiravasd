@@ -763,7 +763,7 @@ def page_dashboard3(state):
     #     print(indice)
         barWidth = 0.05
 
-        plt.figure(figsize=(35,27))
+        plt.figure(figsize=(15,7))
 
         r1 = np.arange(len(indice[0]))
         r2 = [x + barWidth for x in r1]
