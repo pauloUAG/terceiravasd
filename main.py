@@ -56,25 +56,37 @@ def page_dashboard(state):
     
     url = 'Vendas.csv'
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
-    datavenda = df['Data Venda']
+    df['concatena'] = df.apply(lambda x: x['Data Venda']+'-'+x['ValorVenda'], axis=1)
+
+    concatena = df['concatena']
     ano = []
     dados = []
     quantidades = []
+    cont = 0
 
 
-    for indice in datavenda:
-        valor = indice.split("/")
+    for indice in concatena:
+        
+        valor = indice.split("-")
         dados.append(valor)
-        if(valor[2] not in ano):
-            ano.append(valor[2])
-            
+        tempAno = valor[0].split("/")
+        
+        if(tempAno[2] not in ano):
+            ano.append(tempAno[2])
+
     for indice1 in ano:
+        
+        soma = 0.0
+        for indice2 in concatena:
+            
+            temp = indice2.split("-")
+            tempAno = temp[0].split("/")
+            if(tempAno[2] == indice1):
+                substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                soma += float(substituir)
+            cont += 1
         cont = 0
-        for indice2 in datavenda:
-            temp = indice2.split("/")
-            if(temp[2] == indice1):
-                cont += 1
-        quantidades.append(cont)
+        quantidades.append(soma)
 
 
     plt.bar(ano, quantidades, color="#228B22")
