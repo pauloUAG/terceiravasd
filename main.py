@@ -983,6 +983,7 @@ def page_dashboard4(state):
     categorias = []
     categoriasLojasTotal = []
     lojas = []
+    # cont = 0
     # temp = []
 
     df['concatena'] = df.apply(lambda x: x['Categoria']+'-'+x['Loja'], axis=1)
@@ -997,22 +998,47 @@ def page_dashboard4(state):
         if(valor[0] not in categorias):
             categorias.append(valor[0])
 
+    # print(categorias)
     for indice in lojas:
-        
+
         categoriasLoja = []
         categoriasQuantidade = []
-        
+        somaCelulares = 0.0
+        somaEletrodomesticos = 0.0
+        somaEletronicos = 0.0
+        somaEletroportateis = 0.0
+        cont = 0
+
         for indice2 in df['concatena']:
             valor = indice2.split("-")
+    #         print(valor)
             if(indice == valor[1]):
-                categoriasLoja.append(valor[0])
+                if(valor[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelulares += float(substituir)
+                elif(valor[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticos += float(substituir)
+                elif(valor[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicos += float(substituir)
+                elif(valor[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateis += float(substituir)
+    #             categoriasLoja.append(valor[0])
+            cont += 1
         
-        for indice3 in categorias:
-            categoriasQuantidade.append(categoriasLoja.count(indice3))
+        categoriasLoja.append(somaCelulares)
+        categoriasLoja.append(somaEletrodomesticos)
+        categoriasLoja.append(somaEletronicos)
+        categoriasLoja.append(somaEletroportateis)
         
-        categoriasLojasTotal.append(categoriasQuantidade)
+    #     for indice3 in categorias:
+    #         categoriasQuantidade.append(categoriasLoja.count(indice3))
 
-    # print(categorias)
+        categoriasLojasTotal.append(categoriasLoja)
+
+    # print(len(categoriasLojasTotal[0]))
     # print(lojas)
     # print(categoriasLojasTotal)
 
@@ -1039,7 +1065,7 @@ def page_dashboard4(state):
 
     plt.xlabel('\nR1296 = Recife  |  BA7783 = Salvador  |  JP8825 = João Pessoa  |  RG7742 = Natal  |  AL1312 = Maceió  |  GA7751 = Garanhuns  |  JB6325 = Jaboatão')
     plt.xticks([r + barWidth for r in range(len(categoriasLojasTotal))], lojas)
-    plt.ylabel('Quantidade')
+    plt.ylabel('Valores - R$')
     plt.title('Vendas das lojas por categoria')
 
     plt.legend()
