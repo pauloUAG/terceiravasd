@@ -340,7 +340,7 @@ def page_settings2(state):
 
     plt.xlabel('Anos')
     plt.xticks([r + barWidth for r in range(len(ano))], ano)
-    plt.ylabel('Valores - R$')
+    plt.ylabel('Valores  -  R$')
     plt.title('Quantidade total de vendas por ano e categoria')
 
     plt.legend()
