@@ -814,55 +814,152 @@ def page_settings3(state):
     df = pd.read_csv(url, encoding = 'cp1252', sep = ';')
     produtos = []
     fabricantes = []
+    fabricante = []
     total = []
 
-    df['concatena'] = df.apply(lambda x: x['Produto']+'-'+x['Fabricante'], axis=1)
+    df['concatena'] = df.apply(lambda x: x['Produto']+'*'+x['Fabricante'], axis=1)
+    # print(df['concatena'])
+
     for indice in df['concatena']:
         
-        valor = indice.split("-")
+        valor = indice.split("*")
 
         for indice2 in valor:
+    #         print(valor)
             if(valor[1] not in fabricantes):
                 fabricantes.append(valor[1])
         for indice3 in valor:
             if(valor[0] not in produtos):
                 produtos.append(valor[0])
 
+    # print(fabricantes)
+    iteraFabricantes = 0
+
     for indice in fabricantes:
-        produtosFabricante = []
+        
+        produtosValores = []
+        fabricanteDicio = {}
+        cont = 0
+        somatorio = 0
+        produto1 = 0.0
+        produto2 = 0.0
+        produto3 = 0.0
+        produto4 = 0.0
+        produto5 = 0.0
+        produto6 = 0.0
+        produto7 = 0.0
+        produto8 = 0.0
+        produto9 = 0.0
+        produto10 = 0.0
+        produto11 = 0.0
+        produto12 = 0.0
+        produto13 = 0.0
+        produto14 = 0.0
+        produto15 = 0.0
+        produto16 = 0.0
+        produto17 = 0.0
+        produto18 = 0.0
+        produto19 = 0.0
+        
         for indice2 in df['concatena']:
             
-            valor = indice2.split("-")
+            produtosFabricante = []
+            valor = indice2.split("*")
     #         print(valor)
+
             if(indice == valor[1]):
-                produtosFabricante.append(valor[0])
-        total.append(produtosFabricante)
-
-    # print(fabricantes)
-    # 19 PRODUTOS
-    # 16 FABRICANTES
-
-    for indice in range(len(total)):
-        tempDicio = {}
-        for indice2 in produtos:
-            quantidade = total[indice].count(indice2)
-            tempDicio.update({indice2: quantidade})
-    #         temp.append(total[indice].count(indice2))
-    #     for item in sorted(tempDicio, key = tempDicio.get):
-    #         print (tempDicio[item])
-        sortedDict = sorted(tempDicio.items(), key=operator.itemgetter(1))
+                if(valor[0] == "Morotola Moto G5"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto1 += substituir
+                    fabricanteDicio.update({'Morotola Moto G5': produto1})
+                elif(valor[0] == "Samsung Galaxy 8"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto2 += substituir
+                    fabricanteDicio.update({'Samsung Galaxy 8': produto2})
+                elif(valor[0] == "LG K10 TV Power"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto3 += substituir
+                    fabricanteDicio.update({'LG K10 TV Power': produto3})
+                elif(valor[0] == "Sony Experia XA"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto4 += substituir
+                    fabricanteDicio.update({'Sony Experia XA': produto4})
+                elif(valor[0] == "Geladeira Duplex"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto5 += substituir
+                    fabricanteDicio.update({'Geladeira Duplex': produto5})
+                elif(valor[0] == "Grill"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto6 += substituir
+                    fabricanteDicio.update({'Grill': produto6})
+                elif(valor[0] == "Lavadora 11 Kg"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto7 += substituir
+                    fabricanteDicio.update({'Lavadora 11 Kg': produto7})
+                elif(valor[0] == "Micro"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto8 += substituir
+                    fabricanteDicio.update({'Micro': produto8})
+                elif(valor[0] == "Ar Condicionado"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto9 += substituir
+                    fabricanteDicio.update({'Ar Condicionado': produto9})
+                elif(valor[0] == "Secadora Vapor"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto10 += substituir
+                    fabricanteDicio.update({'Secadora Vapor': produto10})
+                elif(valor[0] == "Forno"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto11 += substituir
+                    fabricanteDicio.update({'Forno': produto11})
+                elif(valor[0] == "Desktop HP 16 GB"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto12 += substituir
+                    fabricanteDicio.update({'Desktop HP 16 GB': produto12})
+                elif(valor[0] == "Notebook Dell 8 GB"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto13 += substituir
+                    fabricanteDicio.update({'Notebook Dell 8 GB': produto13})
+                elif(valor[0] == "Impressora Deskjet"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto14 += substituir
+                    fabricanteDicio.update({'Impressora Deskjet': produto14})
+                elif(valor[0] == "Aspirador"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto15 += substituir
+                    fabricanteDicio.update({'Aspirador': produto15})
+                elif(valor[0] == "Ventilador"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto16 += substituir
+                    fabricanteDicio.update({'Ventilador': produto16})
+                elif(valor[0] == "Fritadeira"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto17 += substituir
+                    fabricanteDicio.update({'Fritadeira': produto17})
+                elif(valor[0] == "Processador de Alimentos"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto18 += substituir
+                    fabricanteDicio.update({'Processador de Alimentos': produto18})
+                elif(valor[0] == "Liquidificador"):
+                    substituir = float(df['ValorVenda'].iloc[cont].replace(',','.'))
+                    produto19 += substituir
+                    fabricanteDicio.update({'Liquidificador': produto19})
+            cont += 1
+            
+        sortedDict = sorted(fabricanteDicio.items(), key=operator.itemgetter(1))
         dfFinal = DataFrame (sortedDict,columns=['Produto', 'Quantidade'])
         
-        #   Desenhar o gráfico
         fig, ax = plt.subplots(figsize=(16,10), facecolor='white', dpi= 80)
         ax.vlines(x=dfFinal.index, ymin=0, ymax=dfFinal.Quantidade, color='firebrick', alpha=0.7, linewidth=20)
-        
+
         for i, Quantidade in enumerate(dfFinal.Quantidade):
             ax.text(i, Quantidade+0.5, round(Quantidade, 1), horizontalalignment='center')
 
         # Title, Label, Ticks and Ylim
-        ax.set_title(fabricantes[indice], fontdict={'size':22})
-        ax.set(ylabel='Quantidades', ylim=(0, 480))
+    #     print(dfFinal)
+        ax.set_title(fabricantes[iteraFabricantes], fontdict={'size':22})
+        iteraFabricantes += 1
+        ax.set(ylabel='Valores - R$', ylim=(0, 800000))
         plt.xticks(dfFinal.index, dfFinal.Produto.str.upper(), rotation=60, horizontalalignment='right', fontsize=12)
 
         # Add patches to color the X axis labels
