@@ -1748,6 +1748,7 @@ def page_settings5(state):
     lojas = df['Loja'].tolist()
     ranking = []
     lojasTemp = []
+    lojasValorTotal = [0,0,0,0,0,0,0]
 
     for indice in lojas:
         if(indice not in lojasTemp):
@@ -1759,12 +1760,48 @@ def page_settings5(state):
 
     # print(lojasTemp)
     # print(ranking)
+    loja0 = 0.0
+    loja1 = 0.0
+    loja2 = 0.0
+    loja3 = 0.0
+    loja4 = 0.0
+    loja5 = 0.0
+    loja6 = 0.0
+    loja7 = 0.0
 
-    dfLojas = pd.DataFrame(list(zip(lojasTemp,ranking)), columns = ['Lojas','Quantidade'])
+    for indice2 in df.index:
+        if(df["Loja"][indice2] == "JB6325"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            loja0 += substituir
+            lojasValorTotal[0] = loja0
+        elif(df["Loja"][indice2] == "GA7751"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            loja1 += substituir
+            lojasValorTotal[1] = loja1
+        elif(df["Loja"][indice2] == "AL1312"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            loja2 += substituir
+            lojasValorTotal[2] = loja2
+        elif(df["Loja"][indice2] == "JP8825"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            loja3 += substituir
+            lojasValorTotal[3] = loja3
+        elif(df["Loja"][indice2] == "BA7783"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            loja4 += substituir
+            lojasValorTotal[4] = loja4
+        elif(df["Loja"][indice2] == "RG7742"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            loja5 += substituir
+            lojasValorTotal[5] = loja5
+        elif(df["Loja"][indice2] == "R1296"):
+            substituir = float(df['ValorVenda'].iloc[indice2].replace(',','.'))
+            loja6 += substituir
+            lojasValorTotal[6] = loja6
+
+
+    dfLojas = pd.DataFrame(list(zip(lojasTemp,lojasValorTotal)), columns = ['Lojas','Quantidade'])
     dfLojasOrdenados = dfLojas.sort_values(by=['Quantidade'], ascending=True)
-    # print(dfLojas)
-
-
 
     # INICIO DE ÁREA PARA CRIAR O RANKING DE VENDAS POR LOJA!
 
@@ -1777,7 +1814,8 @@ def page_settings5(state):
 
     # Title, Label, Ticks and Ylim
     ax.set_title('Ranking de Vendas por Loja', fontdict={'size':22})
-    ax.set(ylabel='Quantidades', ylim=(0, 1800))
+    ax.set(ylabel='Valores - R$', ylim=(0, 1700000))
+    ax.set(xlabel='\nR1296 = Recife  |  BA7783 = Salvador  |  JP8825 = João Pessoa  |  RG7742 = Natal  |  AL1312 = Maceió  |  GA7751 = Garanhuns  |  JB6325 = Jaboatão', ylim=(0, 1700000))
     plt.xticks(dfLojas.index, dfLojasOrdenados.Lojas.str.upper(), rotation=60, horizontalalignment='right', fontsize=12)
 
     # Add patches to color the X axis labels
