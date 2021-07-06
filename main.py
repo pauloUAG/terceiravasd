@@ -277,19 +277,45 @@ def page_settings2(state):
         
         categoriasAno = []
         categoriasQuantidade = []
+        somaCelulares = 0.0
+        somaEletrodomesticos = 0.0
+        somaEletronicos = 0.0
+        somaEletroportateis = 0.0
+        cont = 0
         
         for indice2 in df['concatena']:
             temp = indice2.split("-")
             temp2 = temp[1].split("/")
 
             if(indice == temp2[2]):
+
+                if(temp[0] == 'Celulares'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaCelulares += float(substituir)
+                elif(temp[0] == 'Eletrodomésticos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletrodomesticos += float(substituir)
+                elif(temp[0] == 'Eletrônicos'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletronicos += float(substituir)
+                elif(temp[0] == 'Eletroportáteis'):
+                    substituir = df['ValorVenda'].iloc[cont].replace(',', '.')
+                    somaEletroportateis += float(substituir)
                 categoriasAno.append(temp[0])
+            cont += 1
+        
+        categoriasQuantidade.append(somaCelulares)
+        categoriasQuantidade.append(somaEletrodomesticos)
+        categoriasQuantidade.append(somaEletronicos)
+        categoriasQuantidade.append(somaEletroportateis)
+        
+        categoriasTotal.append(categoriasQuantidade)   
                 
         
-        for indice3 in categorias:
-            categoriasQuantidade.append(categoriasAno.count(indice3))
+    #     for indice3 in categorias:
+    #         categoriasQuantidade.append(categoriasAno.count(indice3))
         
-        categoriasTotal.append(categoriasQuantidade)
+    #     categoriasTotal.append(categoriasQuantidade)
 
     categoriasAno = []
     for indice in range(len(categoriasTotal[0])):
