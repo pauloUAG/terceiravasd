@@ -34,11 +34,11 @@ listaPercentualObitos = []
 
 #url1 = "C:\Users\sousa\OneDrive\Documentos\HIST_PAINEL_COVIDBR_11jul2021\HIST_PAINEL_COVIDBR_2021_Parte1_11jul2021.csv"
 #url2 = "C:\Users\sousa\OneDrive\Documentos\HIST_PAINEL_COVIDBR_11jul2021\HIST_PAINEL_COVIDBR_2021_Parte2_11jul2021.csv"
-#df1 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2020_Parte1_11jul2021.csv", sep = ';')
-#df2 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2020_Parte2_11jul2021.csv", sep = ';')
-df1 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2021_Parte1_11jul2021.csv", sep = ';')
-df2 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2021_Parte2_11jul2021.csv", sep = ';')
-listFrames = [df1, df2]
+df1 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2020_Parte1_11jul2021.csv", sep = ';')
+df2 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2020_Parte2_11jul2021.csv", sep = ';')
+df3 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2021_Parte1_11jul2021.csv", sep = ';')
+df4 = pd.read_csv(r"HIST_PAINEL_COVIDBR_2021_Parte2_11jul2021.csv", sep = ';')
+listFrames = [df1, df2, df3, df4]
 
 resultedFrame = pd.concat(listFrames)
 
